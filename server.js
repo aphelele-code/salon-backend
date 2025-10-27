@@ -11,13 +11,17 @@ const app = express()
 app.use(express.json())
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://salon-backend-1-68nl.onrender.com'],
+    origin: ['http://localhost:5173', 'https://salon-l.netlify.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true
 }))
 app.use((req, res, next) => {
     next()
 } )
+
+app.get('/', (req, res) => {
+  res.send('✅ Backend is running');
+});
 
 //routes
 app.use( '/appointment',appointmentRoutes)
